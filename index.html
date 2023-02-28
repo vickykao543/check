@@ -1,3 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+<style> 
+@media screen and (max-width: 500px){ 
+form{
+ zoom:150%;
+} 
+
+} 
+
+@media screen and (max-width: 380px){ 
+form{ 
+zoom:130%;
+} 
+} 
+
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
 <form>
   <p>請回答以下問題：一共有21題，您可以中途休息，不限制回答時間</p>
 
@@ -128,7 +152,8 @@
   <input type="radio" name="q21" value="3"> 我對性已完全沒有興趣了<br>
 
   <br>
-  <input type="button" value="提交" onclick="calculateScore()">
+<div class="text-right">
+  <input type="button" value="提交" onclick="calculateScore()" class="alert alert-primary text-center h1 btn"></div>
 </form>
 
 <div id="result"></div>
@@ -162,3 +187,8 @@ function calculateScore() {
 
 
   </script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
