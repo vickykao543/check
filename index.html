@@ -5,14 +5,69 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
        
 <style> 
+form{
+ margin:2em;
+} 
+
+#result {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.close-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+form p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+form input[type=radio] {
+  margin-left: 20px;
+}
+
+form input[type=radio]+label {
+  margin-left: 5px;
+}
+
+
 @media screen and (max-width: 500px){ 
 form{
  zoom:150%;
 } 
+#result {
+width: 100%;
+font-size: 1.2em;
+}
 
 } 
 
 @media screen and (max-width: 380px){ 
+form{ 
+zoom:130%;
+} 
+#result {
+width: 100%;
+font-size: 1.2em;
+}
+} 
+
+@media screen and (min-width: 501px){ 
 form{ 
 zoom:130%;
 } 
@@ -162,7 +217,14 @@ zoom:130%;
 function calculateScore() {
   var scores = document.querySelectorAll('input[type="radio"]:checked');
   if (scores.length < 21) {
-    alert("您有未回答的問題，請完成全部問題後提交！");
+    var alertBox = document.createElement("div");
+    alertBox.innerHTML = "<span style='font-weight:bold;'>警告！</span> 您有未回答的問題，請完成全部問題後提交！<button onclick='this.parentElement.style.display=\"none\"' style='float:right;'>關閉</button>";
+    alertBox.style.backgroundColor = "#ffe4e4";
+    alertBox.style.border = "1px solid #f44336";
+    alertBox.style.borderRadius = "5px";
+    alertBox.style.padding = "10px";
+    alertBox.style.marginBottom = "20px";
+    document.querySelector("#result").appendChild(alertBox);
     return;
   }
   var totalScore = 0;
@@ -181,7 +243,14 @@ function calculateScore() {
     message = "重度憂鬱：需要就醫協助，並接受專業的治療。";
   }
 
-  document.getElementById("result").innerHTML = "你的總分是：" + totalScore + "，" + message;
+  var resultBox = document.createElement("div");
+  resultBox.innerHTML = "你的總分是：<span style='font-weight:bold;'>" + totalScore + "</span>，" + message + "<button onclick='this.parentElement.style.display=\"none\"' style='float:right;'>關閉</button>";
+  resultBox.style.backgroundColor = "#e4f1ff";
+  resultBox.style.border = "1px solid #2196f3";
+  resultBox.style.borderRadius = "5px";
+  resultBox.style.padding = "10px";
+  document.querySelector("#result").appendChild(resultBox);
+  return;
 }
 
 
